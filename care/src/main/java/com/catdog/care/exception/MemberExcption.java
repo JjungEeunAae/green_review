@@ -3,10 +3,10 @@ package com.catdog.care.exception;
 import lombok.Getter;
 
 @Getter
-public class EmpExcption extends RuntimeException{
+public class MemberExcption extends RuntimeException{
     private ErrorCode errorCode;
 
-    public EmpExcption(ErrorCode errorCode) {
+    public MemberExcption(ErrorCode errorCode) {
         super(errorCode.getMessage());
         this.errorCode = errorCode;
     }

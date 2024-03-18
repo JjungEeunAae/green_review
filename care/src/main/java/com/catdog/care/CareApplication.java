@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "com.catdog.care.emp") // EmpRepository가 있는 패키지 경로로 수정
+@EnableJpaRepositories(basePackages = "com.catdog.care.*") // EmpRepository가 있는 패키지 경로로 수정
 public class CareApplication {
 
 	public static void main(String[] args) {

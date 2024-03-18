@@ -1,5 +1,6 @@
 package com.catdog.care.exception;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -19,17 +20,17 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(EmpExcption.class)
-    private final ResponseEntity<ErrorResponse> handleEmpExcption(EmpExcption empExcption) {
-        ErrorCode errorCode = empExcption.getErrorCode();
+    @ExceptionHandler(MemberExcption.class)
+    private ResponseEntity<ErrorResponse> handleEmpExcption(MemberExcption memberExcption) {
+        ErrorCode errorCode = memberExcption.getErrorCode();
 
         ErrorResponse errorResponse = ErrorResponse.builder()
-                                    .errorCode(errorCode.getErrorCode())
-                                    .errorMessage(errorCode.getMessage())
-                                    .errorDateTime(LocalDateTime.now())
-                                    .build();
-        return ResponseEntity.status(empExcption.getErrorCode()
-                                                .getHttpStatus())
+                                                    .errorCode(errorCode.getErrorCode())
+                                                    .errorMessage(errorCode.getMessage())
+                                                    .errorDateTime(LocalDateTime.now())
+                                                    .build();
+        return ResponseEntity.status(memberExcption.getErrorCode()
+                                                    .getHttpStatus())
                             .body(errorResponse);
     }
 
